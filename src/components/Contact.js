@@ -63,7 +63,7 @@ const Contact = () => {
       {/* Add your photo here */}
       <div className="photo-container">
         <div className="photo-wrapper">
-          <img className="profile-photo" src="hover-photo.jpg" alt="Your descriptive text" />
+          <img className="profile-photo" src="hover-photo1.jpg" alt="Your descriptive text" />
           <div className="details-container">
             <br/>
             <p><strong>Email:</strong> lasiruminrukworkspace@gmail.com</p>
