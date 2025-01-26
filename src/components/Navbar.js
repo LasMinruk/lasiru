@@ -24,11 +24,7 @@ const Navbar = () => {
           </Link>
         </li>
         
-        <li>
-          <Link to="contact" smooth={true} duration={800} onClick={toggleMenu}>
-            Contact
-          </Link>
-        </li>
+       
       </ul>
     </nav>
   );
