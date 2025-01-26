@@ -20,7 +20,7 @@ const Navbar = () => {
       <ul className={`nav-links ${isOpen ? "open" : ""}`}>
         <li>
           <Link to="education" smooth={true} duration={800} onClick={toggleMenu}>
-            Skills & Education
+            Skills and Education
           </Link>
         </li>
         
