@@ -19,12 +19,16 @@ const Navbar = () => {
       </div>
       <ul className={`nav-links ${isOpen ? "open" : ""}`}>
         <li>
-          <Link to="education" smooth={true} duration={800} onClick={toggleMenu}>
-            Skills and Education
+          <Link
+            to="education"
+            smooth={true}
+            duration={400} // Reduced duration for faster scroll response
+            offset={-70}  // Adjust for sticky navbar height
+            onClick={toggleMenu}
+          >
+            Skills
           </Link>
         </li>
-        
-       
       </ul>
     </nav>
   );
