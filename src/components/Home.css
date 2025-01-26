@@ -1,4 +1,3 @@
-/* Main Hero Section */
 .home {
   min-height: 100vh;
   display: flex;
@@ -6,14 +5,16 @@
   justify-content: center;
   background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
   color: white;
-  padding: -20px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .home-content {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   gap: 20px;
 }
@@ -21,10 +22,11 @@
 .text-section {
   flex: 1;
   text-align: left;
+  padding: 20px;
 }
 
 .text-section h1 {
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
   margin-bottom: 10px;
   color: #00bcd4;
 }
@@ -34,23 +36,23 @@
 }
 
 .text-section h2 {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 3vw, 2rem); /* Responsive font size */
   margin-bottom: 15px;
 }
 
 .text-section p {
   margin-bottom: 20px;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: clamp(1rem, 2.5vw, 1.2rem); /* Responsive font size */
+  line-height: 1.8;
   color: #d4d4d4;
 }
 
 .btn-primary {
   background-color: #00bcd4;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 25px;
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -60,17 +62,17 @@
   background-color: #ff9800;
 }
 
-/* Image Section */
 .image-section {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .circle {
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   background: linear-gradient(135deg, #00bcd4, #ff9800);
   display: flex;
@@ -78,16 +80,25 @@
   align-items: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.animated-photo {
+.circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.circle img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: float 3s ease-in-out infinite;
 }
 
-@keyframes float {
+.animated-photo {
+  animation: updown 3s ease-in-out infinite;
+}
+
+@keyframes updown {
   0%, 100% {
     transform: translateY(0);
   }
@@ -96,7 +107,63 @@
   }
 }
 
-/* Responsive Design */
+.social-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-icon {
+  font-size: 2.5rem;
+  padding: 12px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-icon.github {
+  background-color: #333;
+  color: white;
+}
+
+.social-icon.github:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.social-icon.linkedin {
+  background-color: #0077b5;
+  color: white;
+}
+
+.social-icon.linkedin:hover {
+  background-color: #005582;
+}
+
+.social-icon.instagram {
+  background-color: #e1306c;
+  color: white;
+}
+
+.social-icon.instagram:hover {
+  background-color: #b32054;
+}
+
+@media (max-width: 1024px) {
+  .home-content {
+    flex-wrap: wrap;
+  }
+
+  .text-section {
+    padding: 15px;
+  }
+
+  .circle {
+    width: 250px;
+    height: 250px;
+  }
+}
+
 @media (max-width: 768px) {
   .home-content {
     flex-direction: column;
@@ -106,18 +173,6 @@
   .text-section {
     order: 2;
     text-align: center;
-  }
-
-  .text-section h1 {
-    font-size: 2rem;
-  }
-
-  .text-section h2 {
-    font-size: 1.2rem;
-  }
-
-  .text-section p {
-    font-size: 0.9rem;
   }
 
   .circle {
@@ -139,235 +194,41 @@
     width: 150px;
     height: 150px;
   }
-}
 
-
-/* Main Circle Section with Dynamic Animation */
-.circle {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0)); /* Soft gradient */
-}
-
-.circle::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  width: 270px;
-  height: 270px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #00bcd4, #ff9800, #ff9800, #00bcd4);
-  background-size: 300% 300%;
-  animation: gradient-border 6s ease infinite; /* Smooth gradient shift */
-  z-index: -1; /* Behind the image */
-}
-
-.circle::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(255, 152, 0, 0.7), 0 0 30px rgba(0, 188, 212, 0.7);
-  animation: glow-effect 2s ease-in-out infinite alternate; /* Pulsating glow */
-}
-
-.animated-photo {
-  width: 90%;
-  height: 90%;
-  border-radius: 50%;
-  object-fit: cover;
-  animation: float 3s ease-in-out infinite; /* Floating effect */
-}
-
-/* Keyframe Animations */
-@keyframes gradient-border {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+  .social-icon {
+    font-size: 1.5rem;
   }
 }
 
-@keyframes glow-effect {
-  0% {
-    box-shadow: 0 0 10px rgba(255, 152, 0, 0.5), 0 0 20px rgba(0, 188, 212, 0.5);
-  }
-  100% {
-    box-shadow: 0 0 20px rgba(255, 152, 0, 1), 0 0 30px #00bbd4;
-  }
+.btn-primary {
+  background-color: #ff9800;
+  color: white;
+  padding: 12px 30px;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+.btn-primary:hover {
+  background-color: #00bcd4;
+  color: white;
+  border-color: #ff9800;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-
-.circle {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: none; /* No background around the photo */
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-  animation: float 3s ease-in-out infinite; /* Subtle floating effect */
-  transition: transform 1.2s ease, filter 0.2s ease;
+.btn-primary:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
 }
 
-.circle:hover {
-  transform: scale(1.1) rotate(5deg); /* Add tilt and zoom */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Enhance the shadow on hover */
-  transform: scale(1.05); /* Slight zoom on hover */
-  filter: brightness(1.1); /* Brighten the photo */
-}
-
-.circle::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));
-  animation: pulse 3s infinite;
-  z-index: 1;
-}
-
-.circle::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: none; /* Removed background glow effect */
-  z-index: 0;
-}
-
-.animated-photo {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  position: relative;
-  z-index: 2;
-  animation: float 3s ease-in-out infinite; /* Subtle floating effect */
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.circle:hover .animated-photo {
-  transform: scale(1.05); /* Slight zoom on hover */
-  filter: brightness(1.1); /* Brighten the photo */
-}
-
-/* Keyframes for Pulse Effect */
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.5;
+@media (max-width: 480px) {
+  .btn-primary {
+    font-size: 0.9rem;
+    padding: 10px 20px;
   }
 }
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-
-
-
-/* Social Icons Styling */
-.social-links {
-margin-top: 20px;
-display: flex;
-gap: 20px; /* Increase space between icons */
-justify-content: center; /* Center the icons horizontally */
-}
-
-.social-icon {
-font-size: 3rem; /* Increase the icon size */
-transition: transform 0.3s ease, color 0.3s ease;
-padding: 10px; /* Add padding for better spacing */
-border-radius: 40%; /* Rounded icons */
-display: inline-block; /* Ensures proper display */
-background-color: #333; /* Default background for all icons */
-color: white; /* Default white color for icons */
-}
-
-.social-icon:hover {
-transform: scale(2); /* Increase the zoom effect on hover */
-}
-
-/* Instagram Icon */
-.instagram {
-color: #E1306C;
-background-color: white; /* Light background for Instagram */
-}
-
-.github {
-color: white; /* White GitHub icon */
-background-color: #ffffff; /* Dark background for GitHub */
-}
-
-.github:hover {
-background-color: #ffffff; /* Lighter background on hover */
-color: #000000; /* Dark GitHub icon on hover */
-}
-
-/* LinkedIn Icon */
-.linkedin {
-color: #0077B5;
-background-color: white; /* Light background for LinkedIn */
-}
-
-.linkedin:hover {
-background-color: #0077B5; /* Blue background when hovering */
-color: white; /* White color when hovering */
-}
-
-/* Hover Effects */
-.instagram:hover {
-color: #b32054; /* Darken Instagram icon on hover */
-background-color: #fff; /* Lighter background on hover */
-}
-
-.github:hover {
-color: #000; /* Black color for GitHub on hover */
-background-color: #fff; /* Lighter background on hover */
-}
-
-.linkedin:hover {
-color: #005582; /* Darken LinkedIn icon on hover */
-background-color: #f0f0f0; /* Lighter background on hover */
-}
-
