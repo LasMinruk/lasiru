@@ -12,10 +12,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <h1 className="logo">Lasiru Minruk</h1>
-      <div
-        className={`hamburger ${isOpen ? "active" : ""}`}
-        onClick={toggleMenu}
-      >
+      <div className={`hamburger ${isOpen ? "active" : ""}`} onClick={toggleMenu}>
         <span></span>
         <span></span>
         <span></span>
@@ -25,8 +22,8 @@ const Navbar = () => {
           <Link
             to="education"
             smooth={true}
-            duration={400}
-            offset={-70}
+            duration={400} // Reduced duration for faster scroll response
+            offset={-70}  // Adjust for sticky navbar height
             onClick={toggleMenu}
           >
             Education
@@ -36,8 +33,8 @@ const Navbar = () => {
           <Link
             to="skills"
             smooth={true}
-            duration={400}
-            offset={-70}
+            duration={400} // Reduced duration for faster scroll response
+            offset={-70}  // Adjust for sticky navbar height
             onClick={toggleMenu}
           >
             Skills
