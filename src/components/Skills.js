@@ -49,7 +49,7 @@ const Skills = () => {
 
     {/* Social Media */}
     <div className="footer-socials">
-      <h3>Follow Me</h3>
+      <h3>.Follow Me.</h3>
      
     </div>
   </div>
